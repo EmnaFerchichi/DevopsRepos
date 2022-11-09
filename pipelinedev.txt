@@ -6,9 +6,22 @@ pipeline {
                  git branch: 'Emna', url: 'https://github.com/EmnaFerchichi/DevopsRepos.git'
              }
         }
+        
+        stage('MVN CLEAN') {
+            steps {
+                sh 'mvn clean'
+                 
+            }
+        }
            stage("Build") {
                  steps {
 			sh "mvn compile"
 }}
+
+stage("Unit tests") {
+steps {
+sh "mvn test"
+}}
+
    }
 }
