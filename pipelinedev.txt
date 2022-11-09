@@ -1,13 +1,12 @@
 pipeline {
 	agent any 
-        stages{
-            stage ('Clone') {
-                    steps{ sh 'rm -rf *'
-                         sh 'git clone https://github.com/EmnaFerchichi/DevopsRepos.git'
-                    
-                    }
-            }
-            stage("Build") {
+       stages{
+        stage('Clone'){
+             steps{  
+                 git branch: 'Emna', url: 'https://github.com/EmnaFerchichi/DevopsRepos.git'
+             }
+        }
+           stage("Build") {
                  steps {
 bat "mvn compile"
 }}
