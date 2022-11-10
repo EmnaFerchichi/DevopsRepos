@@ -32,10 +32,6 @@ stage('MVN SONARQUBE') {
                  
             }
         }
-stage('Nexus'){
-            steps{
-                sh 'mvn deploy'
-            }
-        }
+
    }
 }
