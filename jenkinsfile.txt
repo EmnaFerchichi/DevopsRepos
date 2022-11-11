@@ -3,7 +3,7 @@ agent any
        stages{
         stage('Clone'){
              steps{  
-                 git branch: 'raniab', url: 'https://github.com/EmnaFerchichi/DevopsRepos.git'
+                 git branch: 'raniab', url: 'https://github.com/EmnaFerchichi/DevopsRepos'
              }
         }
        
