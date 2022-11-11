@@ -71,12 +71,14 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 	</dependencies>
+	
 	<distributionManagement>
 		<repository>
 			<id>deploymentRepo</id>
-			<name>Nexus repository</name>
-			<url>http://192.168.1.15:8081/repository/maven-releases</url>
+			<name>DevopsN</name>
+			<url>http://192.168.1.16:8081/repository/DevopsN/</url>
 		</repository>
+	
 	</distributionManagement>
 
 	<build>
