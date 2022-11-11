@@ -22,15 +22,6 @@ stage("Unit tests") {
 steps {
 sh "mvn test"
 }}
-stage('MVN SONARQUBE') {
-            steps {
-           sh "mvn sonar:sonar \
-  -Dsonar.projectKey=sonarqube \
-  -Dsonar.host.url=http://192.168.56.2:9000 \
-  -Dsonar.login=eb38946777eb9419f08ac9ab169e353441b4d776
-"
-                 
-            }
-        }
+
    }
 }
