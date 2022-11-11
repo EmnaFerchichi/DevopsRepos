@@ -31,9 +31,9 @@ stage('MVN SONARQUBE') {
                  
             }
         }
-            stage('Nexus'){
-            steps{
-                sh 'mvn deploy'
+           stage("DEPLOY with Nexus") {
+            steps { 
+                sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
             }
         }
    }

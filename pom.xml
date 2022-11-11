@@ -82,8 +82,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 <distributionManagement>
 		<repository>
 			<id>deploymentRepo</id>
-			<name>Nexus repository</name>
-			<url>http://192.168.1.22:8081/repository/maven-releases</url>
+			<name>devrepo</name>
+			<url>http://192.168.56.2:8081/repository/devrepo/</url>
 		</repository>
 	</distributionManagement>
 <build>
