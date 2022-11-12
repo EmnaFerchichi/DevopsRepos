@@ -32,11 +32,13 @@ stage('MVN SONARQUBE') {
                  
             }
         }
-stage('Building our image') {
-              steps{
-                 sh 'docker build -t emnaferchichi/tpachat:1.0.0:"" "".$BUILD_ID'
-                   }
-                }
+        stage("DEPLOY with Nexus") {
+            steps { 
+                sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+            }
+        }
+
+
 
    }
 }
