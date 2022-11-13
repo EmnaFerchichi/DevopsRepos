@@ -1,6 +1,8 @@
 package com.esprit.examen.services;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -41,10 +43,14 @@ public class ProduitServiceImplTest {
 	} 
 	@Test 
     public void whenRetrieveAllProducts_thenReturnTheListOfAllProducts() {
-    	when(produitRepository.findAll()).thenReturn(List.of(product1,product2));
+    	List<Produit> listOfProducts=new ArrayList<Produit>();
+    	listOfProducts.add(product1);
+    	listOfProducts.add(product2);
+
+		when(produitRepository.findAll()).thenReturn(listOfProducts);
     	
     	assertEquals(2,produitService.retrieveAllProduits().size());
-    	assertEquals(List.of(product1,product2),produitService.retrieveAllProduits());
+    	assertEquals(listOfProducts,produitService.retrieveAllProduits());
     }
     @Test 
     public void givenProductToUpdate_whenUpdateProduct_thenUpdateProductSuccessfully() {
