@@ -1,5 +1,14 @@
 version: "3.8"
 services:
+  ci-app-front:
+    build:
+      context: .
+    container_name: ci-angular
+    image: ayoubmabrouk1/ci-front:latest
+    ports:
+      - "8888:80"
+    networks:
+      - ci-network
 
   mysql-db:
     image: mysql:5.7
