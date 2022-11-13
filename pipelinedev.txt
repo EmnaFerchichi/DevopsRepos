@@ -44,6 +44,13 @@ stage('MVN SONARQUBE') {
        		 sh "docker build -t emnaferchichi/devopsproject ."
        		}
        		}   
+       		
+       		
+       		 stage("login DockerHub") {
+                steps{
+                    sh 'echo download999!! | docker login -u emnaferchichi -p download999!!'
+                }
+        }
         
                     
        
