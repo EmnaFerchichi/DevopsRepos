@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.esprit.examen.entitydto.Stockdto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,4 +39,7 @@ public class Stock implements Serializable {
 		this.qteMin = qteMin;
 	}
 
+	public Stock(Stockdto s) {
+
+	}
 }

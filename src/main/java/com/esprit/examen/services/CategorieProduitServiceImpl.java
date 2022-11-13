@@ -1,7 +1,6 @@
 package com.esprit.examen.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.CategorieProduit;
@@ -33,14 +32,13 @@ public class CategorieProduitServiceImpl implements ICategorieProduitService {
 
 	@Override
 	public CategorieProduit updateCategorieProduit(CategorieProduit cp) {
-		categorieProduitRepository.save(cp);
-		return cp;
+		 return  addCategorieProduit(cp);
 	}
 
 	@Override
 	public CategorieProduit retrieveCategorieProduit(Long id) {
-		CategorieProduit categorieProduit = categorieProduitRepository.findById(id).orElse(null);
-		return categorieProduit;
+		return categorieProduitRepository.findById(id).orElse(null);
+
 	}
 
 }
