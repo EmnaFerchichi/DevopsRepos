@@ -31,14 +31,14 @@ public class OperateurServiceImpl implements IOperateurService {
 
 	@Override
 	public Operateur updateOperateur(Operateur o) {
-		addOperateur(o);
+		operateurRepository.save(o);
 		return o;
 	}
 
 	@Override
 	public Operateur retrieveOperateur(Long id) {
-		return  operateurRepository.findById(id).orElse(null);
-
+		Operateur operateur = operateurRepository.findById(id).orElse(null);
+		return operateur;
 	}
 
 }
