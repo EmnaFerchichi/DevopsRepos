@@ -38,11 +38,12 @@ stage('MVN SONARQUBE') {
                 sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
             }
         }
-        stage("Build Image") {
-            steps { 
-               sh 'sudo docker build -t emnaferchichi/tpachat:1.0.0 .'            
-               }
-        }
+        
+        stage('Build image') {
+           	steps {
+       		 sh "docker build -t emnaferchichi/devopsproject ."
+       		}
+       		}   
         
                     
        
