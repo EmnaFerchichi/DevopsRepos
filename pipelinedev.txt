@@ -52,6 +52,11 @@ stage('MVN SONARQUBE') {
                 }
         }
         
+        stage("Push to DockerHub") {
+                steps{
+                    sh 'docker push emnaferchichi/devopsproject'
+                }
+        }
                     
        
 
