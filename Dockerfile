@@ -1,7 +1,5 @@
-FROM maven:3.8.2-jdk-8
-
-WORKDIR /spring-app
-COPY . .
-RUN mvn clean install
-
-CMD mvn spring-boot:run
+FROM openjdk:8-jdk-alpine
+RUN apk --no-cache add curl
+RUN curl -u admin:nexus -o tpAchatProject-1.0.jar "http://192.168.56.2:8081/repository/devrepo/com/esprit/examen/tpAchatProject/1.0/tpAchatProject-1.0.jar" -L
+ENTRYPOINT java -jar /tpAchatProject-1.0.jar
+EXPOSE 8085

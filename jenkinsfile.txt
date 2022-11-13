@@ -36,5 +36,20 @@ stage('MVN SONARQUBE') {
                 sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
             }
         }
+        stage('Build image') {
+           	steps {
+       		 sh "docker build -t rania203/devopsproject ."
+       		}
+       		}   
+   stage("login DockerHub") {
+                steps{
+                    sh 'echo docker12345 | docker login -u rania203 -p docker12345'
+                }
+        }
+        stage("Push to DockerHub") {
+                steps{
+                    sh 'docker push rania203/devopsproject'
+                }
+        }
    }
 }
