@@ -19,12 +19,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.repositories.ProduitRepository;
-//@SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class ProduitServiceImplTest {
 	
 	public ProduitServiceImplTest() {
-		// TODO Auto-generated constructor stub
 	} 
 	@InjectMocks
 	ProduitServiceImpl produitService;
@@ -35,44 +33,44 @@ public class ProduitServiceImplTest {
     @Mock
     private ProduitRepository produitRepository;
     
-    private Produit produit1 = new Produit(null,"777434","libbPorduit", 10, new Date(), new Date(),null,null,null);
-    private Produit produit2 = new Produit(null,"777434","libbPorduit", 10, new Date(), new Date(),null,null,null);
+    private Produit prod1 = new Produit(null,"125784","libelleProd1", 12, new Date(), new Date(),null,null,null);
+    private Produit prod2 = new Produit(null,"365425","libelleProd2", 12, new Date(), new Date(),null,null,null);
 	
 	
 	@Test 
 	public void addProductTest() {
-    	when(produitRepository.save(produit1)).thenReturn(produit1);
-    	assertNotNull(produit1);
+    	when(produitRepository.save(prod1)).thenReturn(prod1);
+    	assertNotNull(prod1);
     	
-    	Produit persisted = produitService.addProduit(produit1);
-		assertEquals(produit1, persisted); 
+    	Produit persisted = produitService.addProduit(prod1);
+		assertEquals(prod1, persisted); 
     	
-		System.out.println("add product works !");
+		System.out.println("add product fonctionne!");
 	} 
 	
 	 @Test 
 	    public void retrieveaallProductTest() {
 	    	when(produitRepository.findAll()).thenReturn(Stream
-	    			.of(produit1,produit2)
+	    			.of(prod1,prod2)
 	    			.collect(Collectors.toList()));
 	    	
 	    	assertEquals(2,produitService.retrieveAllProduits().size());
-	    	System.out.println("Retrieve all Produit works !");
+	    	System.out.println("Retrieve all Products fonctionne!");
 	    }
 	
 	   @Test 
 	    public void UpdateProductTest() {
-	    	when(produitRepository.save(produit1)).thenReturn(produit1);
-	    	assertNotNull(produit1);
-	    	assertEquals(produit1, produitService.updateProduit(produit1));
-	    	System.out.println("Update produit works!");
+	    	when(produitRepository.save(prod1)).thenReturn(prod1);
+	    	assertNotNull(prod1);
+	    	assertEquals(prod1, produitService.updateProduit(prod1));
+	    	System.out.println("Update produit fonctionne!");
 	    }
 	    
 	    @Test
 	    public void retrieveProductTest() {
-	    	when(produitRepository.findById(produit1.getIdProduit())).thenReturn(Optional.of(produit1));
-	    	assertEquals(produit1, produitService.retrieveProduit(produit1.getIdProduit()));
-	    	System.out.println("Retrieve product by id works !");
+	    	when(produitRepository.findById(prod1.getIdProduit())).thenReturn(Optional.of(prod1));
+	    	assertEquals(prod1, produitService.retrieveProduit(prod1.getIdProduit()));
+	    	System.out.println("Retrieve product by id fonctionne!");
 	    }
 
     
