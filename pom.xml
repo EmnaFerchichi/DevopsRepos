@@ -75,8 +75,8 @@
 	<distributionManagement>
 		<repository>
 			<id>deploymentRepo</id>
-			<name>DevopsN</name>
-			<url>http://192.168.1.16:8081/repository/DevopsN/</url>
+			<name>devops_nexus</name>
+			<url>http://192.168.56.2:8081/repository/devops_nexus/</url>
 		</repository>
 	
 	</distributionManagement>
