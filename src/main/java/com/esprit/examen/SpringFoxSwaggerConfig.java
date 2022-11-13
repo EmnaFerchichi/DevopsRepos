@@ -28,8 +28,8 @@ public class SpringFoxSwaggerConfig {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiEndPointsInfo())
-				.securityContexts(Collections.singletonList(securityContext()))
-				.securitySchemes(Arrays.asList(apiKey()))
+			//	.securityContexts(Collections.singletonList(securityContext()))
+			//	.securitySchemes(Arrays.asList(apiKey()))
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.esprit.examen.controller"))
 				.paths(PathSelectors.any())
