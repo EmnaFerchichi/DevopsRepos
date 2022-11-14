@@ -37,7 +37,7 @@ services:
     springboot-be:
       depends_on:
         - mysql-db
-      image: oussemajebari98/ci:latest
+      image: ayoubmabrouk1/achat:latest
       container_name: springboot-be
       env_file: ./.env
       environment:
