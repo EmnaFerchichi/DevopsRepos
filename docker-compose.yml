@@ -44,6 +44,7 @@ services:
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=achatdb
       - MYSQL_PORT=3306
+      
 networks:
   ci-network:
     name: ci-network
