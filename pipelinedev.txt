@@ -26,9 +26,9 @@ sh "mvn test"
 stage('MVN SONARQUBE') {
             steps {
            sh "mvn sonar:sonar \
-  -Dsonar.projectKey=sonarqubeee \
+  -Dsonar.projectKey=sonarqubedevops \
   -Dsonar.host.url=http://192.168.56.2:9000 \
-  -Dsonar.login=d259a11ea87dea1def86182a1ced75bf37640b2e"
+  -Dsonar.login=18916fd505cb784e6c98b8cfefc603ce8f0823d2"
                  
             }
         }
