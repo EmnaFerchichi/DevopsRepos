@@ -38,9 +38,7 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 
 	public Fournisseur addFournisseur(Fournisseur f /*Master*/) {
-		DetailFournisseur df= new DetailFournisseur();//Slave
-		df.setDateDebutCollaboration(new Date()); //util
-		//On affecte le "Slave" au "Master"
+		DetailFournisseur df= new DetailFournisseur();
 		f.setDetailFournisseur(df);	
 		fournisseurRepository.save(f);
 		return f;
@@ -74,10 +72,7 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 	@Override
 	public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
-		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
-		SecteurActivite secteurActivite = secteurActiviteRepository.findById(idSecteurActivite).orElse(null);
-        fournisseur.getSecteurActivites().add(secteurActivite);
-        fournisseurRepository.save(fournisseur);
+		
 		
 		
 	}
