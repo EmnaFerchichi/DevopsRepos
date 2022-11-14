@@ -11,7 +11,7 @@ services:
     networks:
       - ci-network
 
-    mysql-db:
+  mysql-db:
       image: mysql:5.7
       restart: unless-stopped
       container_name: mysql-db
@@ -24,7 +24,7 @@ services:
       volumes:
         - db:/var/lib/mysql
 
-    phpmyadmin:
+  phpmyadmin:
       image: phpmyadmin
       restart: unless-stopped
       container_name: php-my-admin
@@ -34,7 +34,7 @@ services:
       environment:
         PMA_HOST: mysql-db
 
-    springboot-be:
+  springboot-be:
       depends_on:
         - mysql-db
       image: ayoubmabrouk1/achat:latest
