@@ -1,0 +1,66 @@
+package com.esprit.examen.services;
+import com.esprit.examen.entities.Produit;
+import com.esprit.examen.entities.Reglement;
+import com.esprit.examen.repositories.ReglementRepository;
+import com.esprit.examen.services.ReglementServiceImpl;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+
+
+@SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
+@ExtendWith(MockitoExtension.class)
+public class ReglementServiceImplTest {
+
+
+    @Mock
+    ReglementRepository regRepository;
+
+    @InjectMocks
+    ReglementServiceImpl regService;
+
+    Date date = new Date();
+    Reglement r = new Reglement((float)100,(float)111,true,date);
+
+    List<Reglement> listReglement = new ArrayList<Reglement>() {
+        {
+            add(new Reglement((float)100,(float)111,false,date));
+            add(new Reglement((float)200,(float)222,true,date));
+        }
+    };
+
+    @Test
+    public void testRetrieveReglement() {
+        Mockito.when(regRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(r));
+        Reglement reg1 = regService.retrieveReglement(2L);
+        Assertions.assertNotNull(reg1);
+    }
+    @Test
+    void test_addReglement() {
+        Reglement r= new Reglement();
+        r.setIdReglement(1L);
+        //mock
+        Mockito.when(regRepository.save(any())).thenReturn(r);
+
+        //assert
+        assertEquals(1L, r.getIdReglement());
+    }
+
+}
