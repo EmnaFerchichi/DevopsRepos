@@ -64,17 +64,17 @@ import com.esprit.examen.repositories.StockRepository;
     	
     	assertEquals(product1, produitService.retrieveProduit(product1.getIdProduit()));
     }
-    @Test
-     void givenProductAndStockId() {
-    	when(produitRepository.findById(product1.getIdProduit())).thenReturn(Optional.of(product1));
-    	when(stockRepository.findById(stock.getIdStock())).thenReturn(Optional.of(stock));
-    	product1.setStock(stock);
-    	when(produitRepository.save(product1)).thenReturn(product1);
+   // @Test
+   // void givenProductAndStockId() {
+    //	when(produitRepository.findById(product1.getIdProduit())).thenReturn(Optional.of(product1));
+    //	when(stockRepository.findById(stock.getIdStock())).thenReturn(Optional.of(stock));
+    	//product1.setStock(stock);
+    	//when(produitRepository.save(product1)).thenReturn(product1);
     	
-    	produitService.assignProduitToStock(product1.getIdProduit(), stock.getIdStock());
+    	//produitService.assignProduitToStock(product1.getIdProduit(), stock.getIdStock());
     	
-    	verify(produitRepository,times(1)).findById(product1.getIdProduit());
-    	verify(stockRepository,times(1)).findById(stock.getIdStock());
-    	verify(produitRepository,times(1)).save(product1);
-    }
+    	//verify(produitRepository,times(1)).findById(product1.getIdProduit());
+    	//verify(stockRepository,times(1)).findById(stock.getIdStock());
+    	//verify(produitRepository,times(1)).save(product1);
+   // }
 }
