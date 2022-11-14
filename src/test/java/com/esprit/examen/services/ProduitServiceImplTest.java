@@ -12,11 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.esprit.examen.entities.Produit;
+import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.StockRepository;
 
 @ExtendWith(SpringExtension.class)
- class ProduitServiceImplTest {
+public class ProduitServiceImplTest {
 	
 	@InjectMocks
 	ProduitServiceImpl produitService;
@@ -27,12 +28,13 @@ import com.esprit.examen.repositories.StockRepository;
     @Mock
     private StockRepository stockRepository;
     
-    private Produit product1 = new Produit(null,"125784","libelleProd1", 12, new Date(), new Date(),null);
-    private Produit product2 = new Produit(null,"365425","libelleProd2", 12, new Date(), new Date(),null);
+    private Produit product1 = new Produit(null,"125784","libelleProd1", 12, new Date(), new Date(),null,null,null);
+    private Produit product2 = new Produit(null,"365425","libelleProd2", 12, new Date(), new Date(),null,null,null);
+    private Stock stock =new Stock();
 	
 	
 	@Test 
-	 void givenValidProduct_whenAddProduct_thenSaveProductSuccessfully() {
+	public void givenValidProduct_whenAddProduct_thenSaveProductSuccessfully() {
     	when(produitRepository.save(product1)).thenReturn(product1);
     	
     	Produit persistedProduct = produitService.addProduit(product1);
@@ -40,7 +42,7 @@ import com.esprit.examen.repositories.StockRepository;
 		assertEquals(product1, persistedProduct); 
 	} 
 	@Test 
-     void whenRetrieveAllProducts_thenReturnTheListOfAllProducts() {
+    public void whenRetrieveAllProducts_thenReturnTheListOfAllProducts() {
     	List<Produit> listOfProducts=new ArrayList<Produit>();
     	listOfProducts.add(product1);
     	listOfProducts.add(product2);
@@ -51,28 +53,28 @@ import com.esprit.examen.repositories.StockRepository;
     	assertEquals(listOfProducts,produitService.retrieveAllProduits());
     }
     @Test 
-     void givenProductToUpdate_whenUpdateProduct_thenUpdateProductSuccessfully() {
+    public void givenProductToUpdate_whenUpdateProduct_thenUpdateProductSuccessfully() {
     	when(produitRepository.save(product1)).thenReturn(product1);
     	
     	assertEquals(product1, produitService.updateProduit(product1));
     }
     @Test
-     void givenProductId_whenRetrieveProduct_thenReturnProductSuccessfully() {
+    public void givenProductId_whenRetrieveProduct_thenReturnProductSuccessfully() {
     	when(produitRepository.findById(product1.getIdProduit())).thenReturn(Optional.of(product1));
     	
     	assertEquals(product1, produitService.retrieveProduit(product1.getIdProduit()));
     }
-   // @Test
-   // void givenProductAndStockId() {
-    //	when(produitRepository.findById(product1.getIdProduit())).thenReturn(Optional.of(product1));
-    //	when(stockRepository.findById(stock.getIdStock())).thenReturn(Optional.of(stock));
-    	//product1.setStock(stock);
-    	//when(produitRepository.save(product1)).thenReturn(product1);
+    @Test
+    public void givenProductAndStockId() {
+    	when(produitRepository.findById(product1.getIdProduit())).thenReturn(Optional.of(product1));
+    	when(stockRepository.findById(stock.getIdStock())).thenReturn(Optional.of(stock));
+    	product1.setStock(stock);
+    	when(produitRepository.save(product1)).thenReturn(product1);
     	
-    	//produitService.assignProduitToStock(product1.getIdProduit(), stock.getIdStock());
+    	produitService.assignProduitToStock(product1.getIdProduit(), stock.getIdStock());
     	
-    	//verify(produitRepository,times(1)).findById(product1.getIdProduit());
-    	//verify(stockRepository,times(1)).findById(stock.getIdStock());
-    	//verify(produitRepository,times(1)).save(product1);
-   // }
+    	verify(produitRepository,times(1)).findById(product1.getIdProduit());
+    	verify(stockRepository,times(1)).findById(stock.getIdStock());
+    	verify(produitRepository,times(1)).save(product1);
+    }
 }
