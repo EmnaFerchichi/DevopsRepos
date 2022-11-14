@@ -5,11 +5,6 @@ pipeline {
   }
     agent any
     stages {
-        stage('Cloning Project from Git') {
-            steps {
-                cleanWs()
-                git url: 'https://github.com/EmnaFerchichi/DevopsRepos.git'           }
-        }
         stage("Build") {
             steps {
                 sh "mvn compile"
