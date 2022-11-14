@@ -12,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.esprit.examen.entities.Produit;
-import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.StockRepository;
 
@@ -30,7 +29,6 @@ import com.esprit.examen.repositories.StockRepository;
     
     private Produit product1 = new Produit(null,"125784","libelleProd1", 12, new Date(), new Date(),null);
     private Produit product2 = new Produit(null,"365425","libelleProd2", 12, new Date(), new Date(),null);
-    private Stock stock =new Stock();
 	
 	
 	@Test 
