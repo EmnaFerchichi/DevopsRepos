@@ -8,7 +8,7 @@ pipeline {
         stage('Cloning Project from Git') {
             steps {
                 cleanWs()
-                git url: 'https://github.com/ayoubmbk/devopsProject.git'           }
+                git url: 'https://github.com/EmnaFerchichi/DevopsRepos.git'           }
         }
         stage("Build") {
             steps {
