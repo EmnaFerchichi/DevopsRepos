@@ -27,8 +27,8 @@ public class CategorieProduitController {
 	@GetMapping("/retrieve-all-categorieProduit")
 	@ResponseBody
 	public List<CategorieProduit> getCategorieProduit() {
-		List<CategorieProduit> list = categorieProduitService.retrieveAllCategorieProduits();
-		return list;
+		return categorieProduitService.retrieveAllCategorieProduits();
+		
 	}
 
 	@GetMapping("/retrieve-categorieProduit/{categorieProduit-id}")
@@ -40,8 +40,8 @@ public class CategorieProduitController {
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
 	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(cp);
-		return categorieProduit;
+		  return categorieProduitService.addCategorieProduit(cp);
+		
 	}
 
 	@DeleteMapping("/remove-categorieProduit/{categorieProduit-id}")

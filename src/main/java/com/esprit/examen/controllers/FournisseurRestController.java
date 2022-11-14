@@ -28,8 +28,8 @@ public class FournisseurRestController {
 	@GetMapping("/retrieve-all-fournisseurs")
 	@ResponseBody
 	public List<Fournisseur> getFournisseurs() {
-		List<Fournisseur> fournisseurs = fournisseurService.retrieveAllFournisseurs();
-		return fournisseurs;
+		return fournisseurService.retrieveAllFournisseurs();
+		
 	}
 
 	@GetMapping("/retrieve-fournisseur/{fournisseur-id}")
@@ -41,8 +41,8 @@ public class FournisseurRestController {
 	@PostMapping("/add-fournisseur")
 	@ResponseBody
 	public Fournisseur addFournisseur(@RequestBody Fournisseur f) {
-		Fournisseur fournisseur = fournisseurService.addFournisseur(f);
-		return fournisseur;
+		return fournisseurService.addFournisseur(f);
+		
 	}
 
 	@DeleteMapping("/remove-fournisseur/{fournisseur-id}")

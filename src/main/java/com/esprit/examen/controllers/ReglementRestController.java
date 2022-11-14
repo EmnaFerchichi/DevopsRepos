@@ -3,7 +3,6 @@ package com.esprit.examen.controllers;
 import java.util.Date;
 import java.util.List;
 
-import com.esprit.examen.entities.Facture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -26,14 +25,14 @@ public class ReglementRestController {
     @PostMapping("/add-reglement")
     @ResponseBody
     public Reglement addReglement(@RequestBody Reglement r) {
-        Reglement reglement = reglementService.addReglement(r);
-        return reglement;
+        return reglementService.addReglement(r);
+        
     }
     @GetMapping("/retrieve-all-reglements")
     @ResponseBody
     public List<Reglement> getReglement() {
-        List<Reglement> list = reglementService.retrieveAllReglements();
-        return list;
+        return reglementService.retrieveAllReglements();
+        
     }
 
     @GetMapping("/retrieve-reglement/{reglement-id}")
