@@ -72,6 +72,14 @@ stage('MVN SONARQUBE') {
                     sh 'docker-compose up -d'
                 }
         }
+        
+        stage("Docker compose Down") {
+                steps{
+                    sh 'docker-compose down'
+                }
+        }
+        
+        
 
 
 
