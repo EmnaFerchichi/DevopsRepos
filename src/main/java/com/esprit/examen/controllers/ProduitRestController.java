@@ -1,6 +1,8 @@
 package com.esprit.examen.controllers;
 
+
 import java.util.List;
+import com.esprit.examen.entitydto.Produitdto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.esprit.examen.entities.Produit;
@@ -18,26 +20,29 @@ public class ProduitRestController {
 	@Autowired
 	IProduitService produitService;
 
+	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
 		return produitService.retrieveAllProduits();
-		
+
 	}
 
+	// http://localhost:8089/SpringMVC/produit/retrieve-produit/8
 	@GetMapping("/retrieve-produit/{produit-id}")
 	@ResponseBody
 	public Produit retrieveRayon(@PathVariable("produit-id") Long produitId) {
 		return produitService.retrieveProduit(produitId);
 	}
 
-
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public Produit addProduit(@RequestBody Produit p) {
-		return produitService.addProduit(p);
-		
+	public Produit addProduit(@RequestBody Produitdto p) {
+		Produit produit =new Produit(p);
+		return produitService.addProduit(produit);
+
 	}
+
 
 	@DeleteMapping("/remove-produit/{produit-id}")
 	@ResponseBody
@@ -45,18 +50,20 @@ public class ProduitRestController {
 		produitService.deleteProduit(produitId);
 	}
 
+
 	@PutMapping("/modify-produit")
 	@ResponseBody
-	public Produit modifyProduit(@RequestBody Produit p) {
-		return produitService.updateProduit(p);
+	public Produit modifyProduit(@RequestBody Produitdto p) {
+		Produit produit =new Produit(p);
+		return produitService.updateProduit(produit);
 	}
 
-	
+
 	@PutMapping(value = "/assignProduitToStock/{idProduit}/{idStock}")
 	public void assignProduitToStock(@PathVariable("idProduit") Long idProduit, @PathVariable("idStock") Long idStock) {
 		produitService.assignProduitToStock(idProduit, idStock);
 	}
 
-	
+
 
 }

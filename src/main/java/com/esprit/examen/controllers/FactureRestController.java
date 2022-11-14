@@ -3,6 +3,7 @@ package com.esprit.examen.controllers;
 import java.util.Date;
 import java.util.List;
 
+import com.esprit.examen.entitydto.FactureDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -21,39 +22,46 @@ public class FactureRestController {
     @Autowired
     IFactureService factureService;
 
+    // http://localhost:8089/SpringMVC/facture/retrieve-all-factures
     @GetMapping("/retrieve-all-factures")
     @ResponseBody
     public List<Facture> getFactures() {
-        return factureService.retrieveAllFactures();
-        
+      return    factureService.retrieveAllFactures();
+
     }
 
+    // http://localhost:8089/SpringMVC/facture/retrieve-facture/8
     @GetMapping("/retrieve-facture/{facture-id}")
     @ResponseBody
     public Facture retrieveFacture(@PathVariable("facture-id") Long factureId) {
         return factureService.retrieveFacture(factureId);
     }
 
+
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture f) {
-        return factureService.addFacture(f);
-        
+    public Facture addFacture(@RequestBody FactureDto f) {
+        Facture facture=new Facture(f);
+       return factureService.addFacture(facture);
+
     }
 
-    
+
     @PutMapping("/cancel-facture/{facture-id}")
     @ResponseBody
     public void cancelFacture(@PathVariable("facture-id") Long factureId) {
         factureService.cancelFacture(factureId);
     }
 
-    
+
+   
+
 
     @PutMapping(value = "/assignOperateurToFacture/{idOperateur}/{idFacture}")
     public void assignOperateurToFacture(@PathVariable("idOperateur") Long idOperateur, @PathVariable("idFacture") Long idFacture) {
         factureService.assignOperateurToFacture(idOperateur, idFacture);
     }
+
 
     @GetMapping(value = "/pourcentageRecouvrement/{startDate}/{endDate}")
     public float pourcentageRecouvrement(
