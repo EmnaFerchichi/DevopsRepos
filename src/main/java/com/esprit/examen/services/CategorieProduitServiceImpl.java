@@ -19,11 +19,7 @@ public class CategorieProduitServiceImpl implements ICategorieProduitService {
 		return categorieProduitRepository.findAll();
 	}
 
-	@Override
-	public CategorieProduit addCategorieProduit(CategorieProduit cp) {
-		categorieProduitRepository.save(cp);
-		return cp;
-	}
+	
 
 	@Override
 	public void deleteCategorieProduit(Long id) {

@@ -17,7 +17,7 @@ import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.StockRepository;
 
 @ExtendWith(SpringExtension.class)
-public class ProduitServiceImplTest {
+ class ProduitServiceImplTest {
 	
 	@InjectMocks
 	ProduitServiceImpl produitService;
@@ -34,7 +34,7 @@ public class ProduitServiceImplTest {
 	
 	
 	@Test 
-	public void givenValidProduct_whenAddProduct_thenSaveProductSuccessfully() {
+	 void givenValidProduct_whenAddProduct_thenSaveProductSuccessfully() {
     	when(produitRepository.save(product1)).thenReturn(product1);
     	
     	Produit persistedProduct = produitService.addProduit(product1);
@@ -42,7 +42,7 @@ public class ProduitServiceImplTest {
 		assertEquals(product1, persistedProduct); 
 	} 
 	@Test 
-    public void whenRetrieveAllProducts_thenReturnTheListOfAllProducts() {
+     void whenRetrieveAllProducts_thenReturnTheListOfAllProducts() {
     	List<Produit> listOfProducts=new ArrayList<Produit>();
     	listOfProducts.add(product1);
     	listOfProducts.add(product2);
@@ -53,19 +53,19 @@ public class ProduitServiceImplTest {
     	assertEquals(listOfProducts,produitService.retrieveAllProduits());
     }
     @Test 
-    public void givenProductToUpdate_whenUpdateProduct_thenUpdateProductSuccessfully() {
+     void givenProductToUpdate_whenUpdateProduct_thenUpdateProductSuccessfully() {
     	when(produitRepository.save(product1)).thenReturn(product1);
     	
     	assertEquals(product1, produitService.updateProduit(product1));
     }
     @Test
-    public void givenProductId_whenRetrieveProduct_thenReturnProductSuccessfully() {
+     void givenProductId_whenRetrieveProduct_thenReturnProductSuccessfully() {
     	when(produitRepository.findById(product1.getIdProduit())).thenReturn(Optional.of(product1));
     	
     	assertEquals(product1, produitService.retrieveProduit(product1.getIdProduit()));
     }
     @Test
-    public void givenProductAndStockId() {
+     void givenProductAndStockId() {
     	when(produitRepository.findById(product1.getIdProduit())).thenReturn(Optional.of(product1));
     	when(stockRepository.findById(stock.getIdStock())).thenReturn(Optional.of(stock));
     	product1.setStock(stock);

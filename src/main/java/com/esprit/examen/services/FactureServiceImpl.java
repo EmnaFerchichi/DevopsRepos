@@ -1,13 +1,10 @@
 package com.esprit.examen.services;
 
-import java.util.Date;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.Facture;
-import com.esprit.examen.entities.Fournisseur;
-import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.repositories.DetailFactureRepository;
 import com.esprit.examen.repositories.FactureRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
@@ -30,7 +27,7 @@ public class FactureServiceImpl implements IFactureService {
 	FournisseurRepository fournisseurRepository;
 	@Autowired
 	ProduitRepository produitRepository;
-    @Autowired
+    @Autowired 
     ReglementServiceImpl reglementService;
 	
 	@Override
@@ -46,7 +43,7 @@ public class FactureServiceImpl implements IFactureService {
 	public Facture addFacture(Facture f) {
 		return factureRepository.save(f);
 	}
-
+ 
 
 	@Override
 	public void cancelFacture(Long factureId) {
@@ -64,22 +61,12 @@ public class FactureServiceImpl implements IFactureService {
 		return facture;
 	}
 
-	@Override
-	public void  getFacturesByFournisseur(Long idFournisseur) {
-	}
 
-	@Override
-	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
-		
-	}
+	
 
-	@Override
-	public float pourcentageRecouvrement(Date startDate, Date endDate) {
-		float totalFacturesEntreDeuxDates = factureRepository.getTotalFacturesEntreDeuxDates(startDate,endDate);
-		float totalRecouvrementEntreDeuxDates =reglementService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
-		return (totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
-		
-	}
+	
+
+	
 	
 
 }
