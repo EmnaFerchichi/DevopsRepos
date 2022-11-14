@@ -28,8 +28,8 @@ public class ProduitServiceImplTest {
     @Mock
     private StockRepository stockRepository;
     
-    private Produit product1 = new Produit(null,"125784","libelleProd1", 12, new Date(), new Date(),null,null,null);
-    private Produit product2 = new Produit(null,"365425","libelleProd2", 12, new Date(), new Date(),null,null,null);
+    private Produit product1 = new Produit(null,"125784","libelleProd1", 12, new Date(), new Date(),null);
+    private Produit product2 = new Produit(null,"365425","libelleProd2", 12, new Date(), new Date(),null);
     private Stock stock =new Stock();
 	
 	
