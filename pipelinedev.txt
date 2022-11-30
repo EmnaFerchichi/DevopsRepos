@@ -17,6 +17,10 @@ agent any
                  steps {
 sh "mvn compile"
 }}
+stage("Unit tests") {
+steps {
+sh "mvn test"
+}}
 
 
 
